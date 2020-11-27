@@ -37,7 +37,7 @@ public class MainPageController extends HttpServlet {
         //List<News> news = NewsDAO.getNews();
         request.setAttribute("Categories", categories);
         //request.setAttribute("News", news);
-        String adrian = "salvador";
+        String adrian = "wapo";
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
