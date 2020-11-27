@@ -37,11 +37,6 @@ public class MainPageController extends HttpServlet {
         //List<News> news = NewsDAO.getNews();
         request.setAttribute("Categories", categories);
         //request.setAttribute("News", news);
-<<<<<<< HEAD
-        String adrian = "wapo";
-=======
-        String adrian = "joto";
->>>>>>> master
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
