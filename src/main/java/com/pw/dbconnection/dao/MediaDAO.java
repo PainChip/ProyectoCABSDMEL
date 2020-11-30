@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  * @author CARLOS
  */
 public class MediaDAO {
-    /*
+    
  public static int insertMedia(Media LaMedia) {
         Connection con = null;
         try {
@@ -31,11 +31,9 @@ public class MediaDAO {
             String sql = "CALL SP_AgregaMedia(?, ?, ?);";
 
             CallableStatement statement = con.prepareCall(sql);
-            statement.setInt(1, news.getCategory().getId());            
-            statement.setString(2, news.getTitle());
-            statement.setString(3, news.getDescription());
-            statement.setString(4, news.getContenido());
-            statement.setInt(5, news.getIdRol());
+            statement.setInt(1, LaMedia.getIdNot());            
+            statement.setBoolean(2, LaMedia.isTipo());
+            statement.setString(3, LaMedia.getUrl());
             
             return statement.executeUpdate();
         } catch (SQLException ex) {
@@ -51,7 +49,7 @@ public class MediaDAO {
         }
         return 0;
     }    
-    
+    /*
         public static List<Noticias> getMedia() {
         List<Media> news = new ArrayList<>();
 

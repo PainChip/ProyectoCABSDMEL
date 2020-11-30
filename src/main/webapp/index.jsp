@@ -99,7 +99,7 @@
                     <a id="cn" class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>                    
                     <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="Configuracion.jsp">Configuracion</a>
+                    <a class="dropdown-item" href="ConfiguracionController" Method="GET">Configuracion</a>
                   </div>
               </li>  
             </ul>

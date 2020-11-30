@@ -52,16 +52,25 @@ public class UserDAO {
 
 
     public static int signInUser(User user) {
+        Connection con = null;
         try {
-            Connection con = DbConnection.getConnection();
+            con = DbConnection.getConnection();
             CallableStatement statement = con.prepareCall("call SP_AgregaUR(?,?,?)");
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getCorreo());
             
             return statement.executeUpdate();
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(NoticiasDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         return 0;
     }
@@ -89,8 +98,9 @@ public class UserDAO {
 
 
     public static User logInUser(User user) {
+        Connection con = null;
         try {
-            Connection con = DbConnection.getConnection();
+            con = DbConnection.getConnection();
             CallableStatement statement = con.prepareCall("call SP_VerUR(?,?)");
             statement.setString(2, user.getUsername());
             statement.setString(1, user.getPassword());
@@ -118,11 +128,18 @@ public class UserDAO {
                     rol = "E";
                     }
                 }
-                return new User(id, username, foto, rol, id2);
-                
+                return new User(id, username, foto, rol, id2);  
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(NoticiasDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         return null;
     }
@@ -154,14 +171,16 @@ public class UserDAO {
         return 0;
     }
     
-    public static User getRedesFotoUser() {
+    public static User getRedesFotoUser(int ID) {
         User news = null;
 
         Connection con = null;
         try {
             con = DbConnection.getConnection();
-            String sql = "CALL SP_GetRedesFoto();";
-            CallableStatement statement = con.prepareCall(sql);     
+            
+            String sql = "CALL SP_GetRedesFoto(?);";
+            CallableStatement statement = con.prepareCall(sql);   
+            statement.setInt(1,ID); 
             ResultSet result = statement.executeQuery();
             String foto="", feis="", insta="", tuiter="";
             while (result.next()) {

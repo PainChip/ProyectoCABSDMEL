@@ -39,10 +39,11 @@ public class ConfiguracionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User usuarioInfo = UserDAO.getRedesFotoUser();
+        HttpSession session = request.getSession();  
+        int rolID = (int)session.getAttribute("id");  
+        User usuarioInfo = UserDAO.getRedesFotoUser(rolID);
         request.setAttribute("Usuinfo", usuarioInfo);
         request.getRequestDispatcher("Configuracion.jsp").forward(request, response);
-        String adrian = "grande";
     }
 
     /**
@@ -56,12 +57,17 @@ public class ConfiguracionController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession session = request.getSession();
-        //Parte donde se inserta la noticia 
-        String face = request.getParameter("Facebook");
-        String twitter = request.getParameter("Instagram");
-        String insta = request.getParameter("Twitter");
+        String RedFace = request.getParameter("feis");
+        String RedInsta = request.getParameter("insta");
+        String RedTuit = request.getParameter("tuit");
+        HttpSession session = request.getSession();
         int id = (int) session.getAttribute("id");
+        //Parte donde se inserta la noticia 
+        
+        String face = "https://www.facebook.com/" + RedFace;
+        String twitter = "https://twitter.com/"+ RedTuit;
+        String insta = "https://www.instagram.com/" +RedInsta;
+        
         User newNews = new User(id, face, face, twitter, insta);
 
         UserDAO.RedesFotoUser(newNews);

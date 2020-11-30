@@ -193,4 +193,35 @@ public class NoticiasDAO {
 
         return NoticiasRevisar;
     }
+        
+    public static int getNoticiaMediaID(Noticias nueva){
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL SP_NotiRecienIns(?, ?, ?, ?);";
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, nueva.getCategory().getId());            
+            statement.setString(2, nueva.getTitle());
+            statement.setString(3, nueva.getDescription());
+            statement.setString(4, nueva.getContenido());
+            
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                int id = result.getInt(1);
+                return id;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Noticias.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
 }

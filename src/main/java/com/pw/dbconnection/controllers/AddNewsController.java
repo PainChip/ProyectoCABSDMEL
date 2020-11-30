@@ -7,8 +7,10 @@ package com.pw.dbconnection.controllers;
 
 
 import com.pw.dbconnection.dao.CategoryDAO;
+import com.pw.dbconnection.dao.MediaDAO;
 import com.pw.dbconnection.dao.NoticiasDAO;
 import com.pw.dbconnection.models.Category;
+import com.pw.dbconnection.models.Media;
 import com.pw.dbconnection.models.Noticias;
 import com.pw.dbconnection.utils.FileUtils;
 import java.io.File;
@@ -71,19 +73,17 @@ public class AddNewsController extends HttpServlet {
         int idCategory = Integer.parseInt(request.getParameter("category"), 10);
         Noticias newNews = new Noticias(title,description,contenido,rol,rolID, new Category(idCategory));
         
-        NoticiasDAO.insertNoticia(newNews);
         //Parte donde se inserta la media
         
-        /*String probemos = request.getParameter("iteraciones");
-        int numeros = Integer.parseInt(probemos);
-        
-        for(int repetir=1; repetir <= numeros; repetir++){
-            
-        String mElement = "elemento" + String.valueOf(repetir);
-        
-        Part file2 = request.getPart(mElement);
-        Part file = request.getPart("image");
-        
+
+        Part file = request.getPart("image");        
+        Part file2 = request.getPart("image2");
+        Part file3 = request.getPart("image3");
+        Part file4 = request.getPart("video");
+        String nameImage= "",nameImage2= "" ,nameImage3= "",nameImage4= "";
+        String fullPath = "",fullPath2= "" ,fullPath3= "",fullPath4= "";
+        boolean bandera = false,bandera2 = false,bandera3 = false;
+
         String path = request.getServletContext().getRealPath("");
         File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
         if (!fileSaveDir.exists()) {
@@ -91,13 +91,63 @@ public class AddNewsController extends HttpServlet {
         }
         
         String contentType = file.getContentType();
-        String nameImage = file.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
-        String extension = FileUtils.GetExtension(contentType);
-        String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
-        file.write(fullPath);
+        if(contentType.equals("image/png")== true || contentType.equals("image/jpeg")== true){
+            nameImage = file.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
+            fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
+            bandera = true;
+        }
+
+        String contentType2 = file2.getContentType();
+        if(contentType2.equals("image/png")== true || contentType2.equals("image/jpeg")== true){
+            nameImage2 = file2.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType2);
+            fullPath2 = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage2;
+            bandera2 = true;
+       
+        }
         
+        String contentType3 = file3.getContentType();
+        if (contentType.equals("image/png") == true || contentType.equals("image/jpeg") == true) {
+            nameImage3 = file3.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType3);
+            fullPath3 = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage3;
+            bandera3 = true;
+        }
         
+        /*if(bandera == true && bandera2 == true && bandera3 == true)
+        {
+            NoticiasDAO.insertNoticia(newNews);
+            int respuesta = NoticiasDAO.getNoticiaMediaID(newNews);
+            if(respuesta != 0)
+            {
+                file.write(fullPath);
+                Media Media1 = new Media(respuesta,true,FileUtils.RUTE_USER_IMAGE + "/" + nameImage);
+                MediaDAO.insertMedia(Media1);
+                file2.write(fullPath2);
+                Media Media2 = new Media(respuesta,true,FileUtils.RUTE_USER_IMAGE + "/" + nameImage2);
+                MediaDAO.insertMedia(Media2);
+                file3.write(fullPath3);
+                Media Media3 = new Media(respuesta,true,FileUtils.RUTE_USER_IMAGE + "/" + nameImage3);
+                MediaDAO.insertMedia(Media3);
+                //News newNews = new News(title, description, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, new Category(idCategory));
+                
+            }
+
         }*/
+        String contentType4 = file4.getContentType();
+        if (contentType.equals("video/mp4") == true) {
+            nameImage4 = file4.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType4);
+            fullPath4 = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage4;
+
+            file4.write(fullPath4);
+        }
+        
+        
+
+
+
+        
+        
+        
+        
 
         //News newNews = new News(title, description, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, new Category(idCategory));
 

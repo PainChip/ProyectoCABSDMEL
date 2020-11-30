@@ -11,11 +11,19 @@ package com.pw.dbconnection.models;
  */
 public class Media {
     private int id;
+    private int idNot;
     private boolean tipo; //1 Imagen, 0 video
     private String Url;
-
-    public Media(int id, boolean tipo, String Url) {
+    //Constructor para insertar Media
+    public Media(int idNot, boolean tipo, String Url) {
+        this.idNot = idNot;
+        this.tipo = tipo;
+        this.Url = Url;
+    }
+    //Constructor para traer Media
+    public Media(int id, int idNot, boolean tipo, String Url) {
         this.id = id;
+        this.idNot = idNot;
         this.tipo = tipo;
         this.Url = Url;
     }
@@ -23,39 +31,22 @@ public class Media {
     public Media() {
     }
 
-    public Media(int id) {
-        this.id = id;
-    }
-
-    public Media(boolean tipo) {
-        this.tipo = tipo;
-    }
-
-    public Media(String Url) {
-        this.Url = Url;
-    }
-
-    public Media(int id, boolean tipo) {
-        this.id = id;
-        this.tipo = tipo;
-    }
-
-    public Media(int id, String Url) {
-        this.id = id;
-        this.Url = Url;
-    }
-
-    public Media(boolean tipo, String Url) {
-        this.tipo = tipo;
-        this.Url = Url;
-    }
-
+    
+    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdNot() {
+        return idNot;
+    }
+
+    public void setIdNot(int idNot) {
+        this.idNot = idNot;
     }
 
     public boolean isTipo() {
@@ -74,6 +65,7 @@ public class Media {
         this.Url = Url;
     }
 
+  
         
 }
 

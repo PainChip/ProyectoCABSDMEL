@@ -96,8 +96,8 @@
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item active" href="perfil.jsp">Perfil </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>    
-                        <a class="dropdown-item" href="edicion.jsp">Edicion</a>
+                            <a id="cn" class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>                    
+                            <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="Configuracion.jsp">Configuracion <span class="sr-only">(current)</span></a>
                       </div>
@@ -123,19 +123,19 @@
         <br>
         <div class="container">
             <div class="row">
-                <form class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController">
+                <form class="col-12" action="ConfiguracionController" method="POST">
                     <h3>Redes Sociales</h3>
                     <div class="form-group">
                         <label for="title">Facebook</label>
-                        <input type="text" class="form-control" name="Facebook" id="Facebook" value="<%= usuario.getFace()%>">
+                        <input type="text" class="form-control" name="feis" id="title" placeholder="<%= usuario.getFace()%>">
                     </div>
                     <div class="form-group">
                         <label for="title">Instagram</label>
-                        <input type="text" class="form-control" name="Instagram" id="Instagram" value="<%= usuario.getInsta()%>">
+                        <input type="text" class="form-control" name="insta" id="Instagram" placeholder="<%= usuario.getInsta()%>">
                     </div>
                     <div class="form-group">
                         <label for="title">Twitter</label>
-                        <input type="text" class="form-control" name="Twitter" id="Twitter" value="<%= usuario.getTwitter()%>">
+                        <input type="text" class="form-control" name="tuit" id="Twitter" placeholder="<%= usuario.getTwitter()%>">
                     </div>     
                      <hr class="my-4">
                       <h3>Foto Perfil</h3>
@@ -145,7 +145,7 @@
                         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Enviar">
+                        <input type="submit" class="btn btn-primary" onclick="revisa()" value="Enviar">
                     </div>
                 </form>
             </div>
@@ -157,4 +157,16 @@
 	    </div>
 	</section>                        
     </body>
+    <script>
+        
+        function revisa(){
+        var x = document.getElementById("Facebook").value;
+        var y = document.getElementById("Instagram").value;
+        var z = document.getElementById("Twitter").value;
+        alert(x);
+        alert(y);
+        alert(z);
+            
+        }
+    </script>
 </html>

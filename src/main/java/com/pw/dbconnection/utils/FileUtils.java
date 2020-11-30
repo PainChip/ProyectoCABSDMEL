@@ -10,7 +10,7 @@ package com.pw.dbconnection.utils;
  * @author CARLOS
  */
 public class FileUtils {
-    public static String RUTE_USER_IMAGE = "assets/images";
+    public static String RUTE_USER_IMAGE = "assets/imagenes";
     
     public static String GetExtension(String contentType) {
         switch (contentType) {

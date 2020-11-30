@@ -31,7 +31,6 @@
           var varFoto = "<%= session.getAttribute("foto")%>";
           var varRol = "<%= session.getAttribute("rol")%>";   
           var varRolID = "<%= session.getAttribute("rolId")%>";
-          document.getElementById("iteraciones").value = 0;
           
 
 
@@ -157,17 +156,28 @@
                     <hr class="my-4">    
                     <div id="Parte2" class="form-group container-fluid"  style="display: none">
                         <div>
-                            <label for="image">Imagen</label>
-                            <input type="file" class="form-control" name="image" id="image">
+                            <label >Imagen</label>
+                            <input type="file" class="form-control" name="image" id="image" >
                             <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small> 
-                            <input type="button" chetado ="1" class="btn btn-primary" style="margin-top: 10px; margin-bottom: 10px" value="Siguiente" onclick="Insertando()">
                         </div>
+                        <div>
+                            <label >Imagen2</label>
+                            <input type="file" class="form-control" name="image2" id="image2" >
+                            <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small> 
+                        </div>                        <div>
+                            <label >Imagen3</label>
+                            <input type="file" class="form-control" name="image3" id="image3" >
+                            <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small> 
                         </div>
-                        <div class="form-group" style="display: none" id="ocultos">
-                            <input type="text" class="form-control"  name="iteraciones" id="iteraciones">                      
-                        </div>                        
+                        <div>
+                            <label>Video</label>
+                            <input type="file" class="form-control" name="video" id="video" >
+                            <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small> 
+                        </div>
+                    </div>
+                      
                         <hr class="my-4"> 
-                        <input type="submit" class="btn btn-primary"  value="Enviar">
+                        <input type="submit" class="btn btn-primary"  value="Enviar" onclick="ComprobarTodo()">
                     </div>
                 </form>
                         
@@ -185,31 +195,29 @@
               document.getElementById("Parte2").style.display = "inline-block";
               document.getElementById("footer").style.position = "relative";
           }
-          function Insertando(){
-               let url;
-              url = document.getElementById("image").value;
-             if(url !== ""){
-             
-              let contenlo = document.getElementById("iteraciones").value;
-              let numero = parseInt(contenlo)+1;
-              document.getElementById("iteraciones").value= numero;
-             
-                 let preparando = '<input type="text" class="form-control" value="'+url+'" id="elemento'+numero+'" name="elemento'+numero+'">';
-                 let Nelemento = 'elemento'+numero;
-                 $("#ocultos").append(preparando);               
-                
-             }
-                 
-                 
-          }
+
           function ComprobarTodo(){
-              let valor2 = document.getElementById("iteraciones").value;
-              if(valor2 < 3)
+              let valor = document.getElementById("image").value;
+              let valor2 = document.getElementById("image2").value;
+              let valor3 = document.getElementById("image3").value;
+              let valor4 = document.getElementById("title").value;
+              let valor5 = document.getElementById("description").value;
+              let valor6 = document.getElementById("contenido").value;
+              let valor7 = document.getElementById("category").value;
+              let bandera = true;
+              let bandera2 = true;
+              if(valor4 === "" || valor5 === "" || valor6 === "" ||  valor7 === -1){
+                bandera = false;
+                alert("Llene los campos y/o seleccione una categoria");
+              }
+              if(valor === "" || valor2 === "" || valor3 === "")
               {
-                event.preventDefault();
+                bandera2 = false;
                 alert("Debe haber minimo 3 imagenes");
               }
-
+              if(bandera === false || bandera2 === false){
+                 event.preventDefault();
+              }
           }
 
                    
