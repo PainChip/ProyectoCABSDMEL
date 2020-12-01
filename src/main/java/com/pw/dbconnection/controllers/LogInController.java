@@ -36,8 +36,8 @@ public class LogInController extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User user = new User(username, password);
-        User logIn = UserDAO.logInUser(user);
+        User userController = new User(username, password);
+        User logIn = UserDAO.logInUser(userController);
         if(logIn == null) {
             //Ver como mandar un mensaje
             //response.sendRedirect("fail.jsp");

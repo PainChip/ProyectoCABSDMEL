@@ -28,10 +28,6 @@
           var varRol = "<%= session.getAttribute("rol")%>";   
           var varRolID = "<%= session.getAttribute("rolId")%>";
 
-          
-
-
-          
           if(varId !== null)
           {
             $("#EstaONo").remove();
@@ -94,7 +90,7 @@
                     Usuario
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item active" href="perfil.jsp">Perfil <span class="sr-only">(current)</span></a>
+                    <a class="dropdown-item active" href="PerfilController">Perfil <span class="sr-only">(current)</span></a>
                     <div class="dropdown-divider"></div>
                     <a id="cn" class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>                    
                     <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>

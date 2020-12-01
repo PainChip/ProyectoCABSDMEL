@@ -36,7 +36,7 @@
                 <input id="contra1" name="password" type="text" class="input-field" placeholder="Contraseña" required>
                 <input id="contra2" name="confirmp" type="text" class="input-field" placeholder="Confirma Contraseña" required>
                 <input id="cajita" name="TyC" type="checkbox" class="check-box"><span>Acepto Terminos y Condiciones</span>
-                <button id="botoncitoRegistra" type="submit" class="submit-btn" >Registrar</button>
+                <button id="botoncitoRegistra" type="submit" class="submit-btn">Registrar</button>
             </form>
 
         </div>

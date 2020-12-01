@@ -44,9 +44,6 @@ public class SignInController extends HttpServlet {
                 //response.sendRedirect("noticias.jsp");
                 //Mensaje de que hubo un error
             }
-
-
-//        response.sendRedirect("index.jsp");
     }
 
     /**

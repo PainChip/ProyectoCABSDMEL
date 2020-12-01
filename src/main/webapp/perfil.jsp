@@ -4,7 +4,11 @@
     Author     : CARLOS
 --%>
 
+<%@page import="com.pw.dbconnection.models.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    User usuario = (User) request.getAttribute("resultadito");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,17 +130,17 @@
             <h1 class="display-5">Mi Perfil</h1>
             <div class="container d-flex align-items-center">
                 <div class="image-cropper">
-                    <img src="https://www.dmarge.com/wp-content/uploads/2015/07/Daniel-Craig-Style-2-of-23.jpg" alt="avatar" class="profile-pic">
+                    <img src="<%= usuario.getFoto()%>" alt="avatar" class="profile-pic">
                 </div>
                 <section id="nombre">
-                    <p class="lead">Nombre</p>
-                    <p class="lead">Estado que se mostrara cuando el lo configure</p>
+                    <p class="lead"><%= usuario.getUsername()%></p>
+                    <p class="lead">Estado que se mostrara cuando el lo configure (Proximamente)</p>
                 </section>
                 
             </div> 
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-instagram"></a>
+            <a href="<%= usuario.getFace()%>" class="fa fa-facebook"></a>
+            <a href="<%= usuario.getTwitter()%>" class="fa fa-twitter"></a>
+            <a href="<%= usuario.getInsta()%>" class="fa fa-instagram"></a>
         </div>
         <div class="jumbotron">
             <h4>Favoritos</h4>

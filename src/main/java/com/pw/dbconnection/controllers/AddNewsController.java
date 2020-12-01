@@ -112,7 +112,7 @@ public class AddNewsController extends HttpServlet {
             bandera3 = true;
         }
         
-        /*if(bandera == true && bandera2 == true && bandera3 == true)
+        if(bandera == true && bandera2 == true && bandera3 == true)
         {
             NoticiasDAO.insertNoticia(newNews);
             int respuesta = NoticiasDAO.getNoticiaMediaID(newNews);
@@ -127,11 +127,8 @@ public class AddNewsController extends HttpServlet {
                 file3.write(fullPath3);
                 Media Media3 = new Media(respuesta,true,FileUtils.RUTE_USER_IMAGE + "/" + nameImage3);
                 MediaDAO.insertMedia(Media3);
-                //News newNews = new News(title, description, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, new Category(idCategory));
-                
             }
-
-        }*/
+        }
         String contentType4 = file4.getContentType();
         if (contentType.equals("video/mp4") == true) {
             nameImage4 = file4.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType4);
@@ -139,25 +136,10 @@ public class AddNewsController extends HttpServlet {
 
             file4.write(fullPath4);
         }
-        
-        
 
-
-
-        
-        
-        
-        
-
-        //News newNews = new News(title, description, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, new Category(idCategory));
-
-        /*
         List<Category> categories = CategoryDAO.getCategories();
-        List<Noticias> news = NoticiasDAO.getNoticias();
         request.setAttribute("Categories", categories);
-        request.setAttribute("News", news);*/
-        
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("CrearNoticia.jsp").forward(request, response);
     }
 
     /**
