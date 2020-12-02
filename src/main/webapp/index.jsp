@@ -39,7 +39,6 @@
                $("#NombreUser").remove();
                $("#LogOFF").remove();
           }
-          
           if(varRol === "Usuario" || varRol === "null" )
           {
             document.getElementById("cn").addEventListener("click", function(event)
@@ -49,7 +48,17 @@
             document.getElementById("edi").addEventListener("click", function(event)
             {                   
                event.preventDefault();
-            });              
+            });  
+          }
+          if(varRol === "null"){
+            document.getElementById("perfi").addEventListener("click", function(event)
+            {                   
+               event.preventDefault();
+            }); 
+            document.getElementById("confi").addEventListener("click", function(event)
+            {                   
+               event.preventDefault();
+            });   
           }
           if(varRol === "CC")
           {
@@ -66,7 +75,7 @@
 <body>
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.jsp">
+        <a class="navbar-brand" href="#">
             <img src="assets/Recursos/Logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
             CineTicias
         </a>
@@ -90,12 +99,12 @@
                     Usuario
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item active" href="PerfilController">Perfil <span class="sr-only">(current)</span></a>
+                    <a id="perfi" class="dropdown-item active" href="PerfilController">Perfil <span class="sr-only">(current)</span></a>
                     <div class="dropdown-divider"></div>
-                    <a id="cn" class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>                    
-                    <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
+                        <a id="cn"class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>                  
+                        <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="ConfiguracionController" Method="GET">Configuracion</a>
+                    <a id="confi" class="dropdown-item" href="ConfiguracionController" Method="GET">Configuracion</a>
                   </div>
               </li>  
             </ul>

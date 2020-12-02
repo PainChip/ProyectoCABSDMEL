@@ -6,8 +6,6 @@
 package com.pw.dbconnection.controllers;
 
 import com.pw.dbconnection.dao.UserDAO;
-import com.pw.dbconnection.models.Category;
-import com.pw.dbconnection.models.Noticias;
 import com.pw.dbconnection.models.User;
 import com.pw.dbconnection.utils.FileUtils;
 import java.io.IOException;

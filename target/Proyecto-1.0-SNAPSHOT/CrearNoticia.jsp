@@ -31,10 +31,7 @@
           var varFoto = "<%= session.getAttribute("foto")%>";
           var varRol = "<%= session.getAttribute("rol")%>";   
           var varRolID = "<%= session.getAttribute("rolId")%>";
-          
 
-
-          
           if(varId !== null)
           {
             $("#EstaONo").remove();
@@ -46,7 +43,6 @@
                $("#NombreUser").remove();
                $("#LogOFF").remove();
           }
-          
           if(varRol === "Usuario" || varRol === "null" )
           {
             document.getElementById("cn").addEventListener("click", function(event)
@@ -56,7 +52,17 @@
             document.getElementById("edi").addEventListener("click", function(event)
             {                   
                event.preventDefault();
-            });              
+            });  
+          }
+          if(varRol === "null"){
+            document.getElementById("perfi").addEventListener("click", function(event)
+            {                   
+               event.preventDefault();
+            }); 
+            document.getElementById("confi").addEventListener("click", function(event)
+            {                   
+               event.preventDefault();
+            });   
           }
           if(varRol === "CC")
           {
@@ -64,8 +70,8 @@
             {                   
                event.preventDefault();
             });              
-          }         
-          
+          }            
+   
       });
     </script>
     </head>
@@ -87,7 +93,7 @@
                     <a class="nav-link" href="index.jsp">Home </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="noticias.jsp">Noticia</a>
+                     <a class="nav-link" href="NoticiasPaginaController" Method"GET">Noticia</a>
                   </li>
 
 
@@ -98,8 +104,8 @@
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item active" href="perfil.jsp">Perfil </a>
                         <div class="dropdown-divider"></div>
-                        <a id="cn" class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>    
-                        <a id="edi" class="dropdown-item" href="edicion.jsp">Edicion</a>
+                            <a id="cn"class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia <span class="sr-only">(current)</span> </a>  
+                            <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="Configuracion.jsp">Configuracion</a>
                       </div>
