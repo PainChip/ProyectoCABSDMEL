@@ -182,16 +182,16 @@ public class UserDAO {
             CallableStatement statement = con.prepareCall(sql);   
             statement.setInt(1,ID); 
             ResultSet result = statement.executeQuery();
-            String foto="", feis="", insta="", tuiter="";
+            String nombre="", foto="", feis="", insta="", tuiter="";
             while (result.next()) {
-                
-                foto = result.getString(1);
-                feis = result.getString(2);
-                insta = result.getString(3);
-                tuiter = result.getString(4);               
+                nombre = result.getString(1);
+                foto = result.getString(2);
+                feis = result.getString(3);
+                insta = result.getString(4);
+                tuiter = result.getString(5);               
                 
             }
-            return new User(foto,feis,insta,tuiter);
+            return new User(nombre, foto,feis,tuiter,insta);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {

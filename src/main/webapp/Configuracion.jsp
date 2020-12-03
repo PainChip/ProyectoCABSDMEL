@@ -101,12 +101,12 @@
                         Usuario
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item active" href="perfil.jsp">Perfil </a>
+                        <a id="perfi" class="dropdown-item active" href="PerfilController?id=<%=session.getAttribute("id")%>">Perfil</a>
                         <div class="dropdown-divider"></div>
                             <a id="cn"class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>                   
                             <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="Configuracion.jsp">Configuracion <span class="sr-only">(current)</span></a>
+                        <a id="confi" class="dropdown-item" href="ConfiguracionController" Method="GET">Configuracion <span class="sr-only">(current)</span></a>
                       </div>
                   </li>  
               </ul>
@@ -130,7 +130,7 @@
         <br>
         <div class="container">
             <div class="row">
-                <form class="col-12" action="ConfiguracionController" method="POST">
+                <form class="col-12" action="ConfiguracionController" method="POST" enctype="multipart/form-data" >
                     <h3>Redes Sociales</h3>
                     <div class="form-group">
                         <label for="title">Facebook</label>

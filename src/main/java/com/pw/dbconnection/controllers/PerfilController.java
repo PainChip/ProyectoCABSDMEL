@@ -37,11 +37,11 @@ public class PerfilController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        /*int rolID = (int) session.getAttribute("id");
-        User resultado = UserDAO.getRedesFotoUser(rolID);
-        resultado.setId(idUser);
-        resultado.setUsername(userName);
-        request.setAttribute("resultadito", resultado);*/
+        String idUsuario = request.getParameter("id");
+        
+        User resultado = UserDAO.getRedesFotoUser(Integer.parseInt(idUsuario, 10));
+
+        request.setAttribute("resultadito", resultado);
         
         /*News element = NewsDAO.getNew(Integer.parseInt(idNews, 10));
         request.setAttribute("New", element);*/

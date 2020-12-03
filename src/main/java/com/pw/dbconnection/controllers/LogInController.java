@@ -49,7 +49,7 @@ public class LogInController extends HttpServlet {
             session.setAttribute("foto", logIn.getFoto());
             session.setAttribute("rol", logIn.getRol());
             session.setAttribute("rolId", logIn.getIdRol());
-            response.sendRedirect("index.jsp");
+            response.sendRedirect(request.getContextPath() + "/indexController"); //Esta linea es para poner el controlador que te manda al indexs
         }
     }
 

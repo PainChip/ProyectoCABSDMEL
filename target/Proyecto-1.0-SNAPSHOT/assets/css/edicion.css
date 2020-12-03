@@ -94,7 +94,12 @@ section .section-title {
     background: #125688 !important;
     color: white !important;
   }
-  
+  #chikito{
+      height:250px ;
+      width:250px ;
+      margin-left: auto;
+      margin-right: auto;
+  }
 /* NoticiaFav*/
 #imagenoticia{
     padding-left: 30px;

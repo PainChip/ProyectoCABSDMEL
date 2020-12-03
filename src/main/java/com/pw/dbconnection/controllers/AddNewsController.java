@@ -82,6 +82,7 @@ public class AddNewsController extends HttpServlet {
         Part file4 = request.getPart("video");
         String nameImage= "",nameImage2= "" ,nameImage3= "",nameImage4= "";
         String fullPath = "",fullPath2= "" ,fullPath3= "",fullPath4= "";
+        int respuesta=-1;
         boolean bandera = false,bandera2 = false,bandera3 = false;
 
         String path = request.getServletContext().getRealPath("");
@@ -115,7 +116,7 @@ public class AddNewsController extends HttpServlet {
         if(bandera == true && bandera2 == true && bandera3 == true)
         {
             NoticiasDAO.insertNoticia(newNews);
-            int respuesta = NoticiasDAO.getNoticiaMediaID(newNews);
+            respuesta = NoticiasDAO.getNoticiaMediaID(newNews);
             if(respuesta != 0)
             {
                 file.write(fullPath);
@@ -133,7 +134,8 @@ public class AddNewsController extends HttpServlet {
         if (contentType.equals("video/mp4") == true) {
             nameImage4 = file4.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType4);
             fullPath4 = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage4;
-
+            Media Media4 = new Media(respuesta,false,FileUtils.RUTE_USER_IMAGE + "/" + nameImage);
+            MediaDAO.insertMedia(Media4);
             file4.write(fullPath4);
         }
 

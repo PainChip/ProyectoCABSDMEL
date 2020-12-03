@@ -150,8 +150,100 @@ public class NoticiasDAO {
         return news;
     }
     
-    public static List<Noticias> getNoticiasEdicion
-        () {
+    public static List<Noticias> get3Noticias() {
+        List<Noticias> news = new ArrayList<>();
+
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL SP_Ver3Noti();";
+            CallableStatement statement = con.prepareCall(sql);
+            
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                List<Media> Medias = new ArrayList<>();
+                int id = result.getInt(1);
+                int idCat = result.getInt(2);
+                String title = result.getString(3);
+                String descripcion = result.getString(4);
+                String contenido = result.getString(5);               
+                sql = "CALL SP_VerNotiMediaInfo(?);";
+                statement = con.prepareCall(sql);
+                statement.setInt(1, id);
+                ResultSet result2 = statement.executeQuery();
+                while(result2.next()) {
+                    int id2 = result2.getInt(2);
+                    boolean tipo = result2.getBoolean(3);
+                    String URL = result.getString(4);
+                    Medias.add(new Media(id2, tipo, URL));
+                }                
+                Category category = CategoryDAO.getCategory(idCat);
+                news.add(new Noticias(id,title, descripcion,contenido, category,Medias));
+            }
+            return news;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(NoticiasDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return news;
+    }
+    
+    public static List<Noticias> get3Noticias(int categoria) {
+        List<Noticias> news = new ArrayList<>();
+
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL SP_VerAllNoti();";
+            CallableStatement statement = con.prepareCall(sql);
+            
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                List<Media> Medias = new ArrayList<>();
+                int id = result.getInt(1);
+                int idCat = result.getInt(2);
+                String title = result.getString(3);
+                String descripcion = result.getString(4);
+                String contenido = result.getString(5);               
+                sql = "CALL SP_VerNotiMediaInfo(?);";
+                statement = con.prepareCall(sql);
+                statement.setInt(1, id);
+                ResultSet result2 = statement.executeQuery();
+                while(result2.next()) {
+                    int id2 = result2.getInt(2);
+                    boolean tipo = result2.getBoolean(3);
+                    String URL = result.getString(4);
+                    Medias.add(new Media(id2, tipo, URL));
+                }                
+                Category category = CategoryDAO.getCategory(idCat);
+                news.add(new Noticias(id,title, descripcion,contenido, category,Medias));
+            }
+            return news;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(NoticiasDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return news;
+    }
+    
+    public static List<Noticias> getNoticiasEdicion()
+    {
         List<Noticias> NoticiasRevisar = new ArrayList<>();
 
         Connection con = null;
@@ -166,14 +258,14 @@ public class NoticiasDAO {
                 int id = result.getInt(1); //idNoticia
                 String title = result.getString(3); //Titulo
                 String descripcion = result.getString(4); //Descripcion
-                sql = "CALL SP_VerNotiMediaInfo(?);";
+                sql = "CALL SP_VerNotiMedia(?);";
                 statement = con.prepareCall(sql);
                 statement.setInt(1, id);
                 ResultSet result2 = statement.executeQuery();
                 while(result2.next()) {
-                    int id2 = result2.getInt(2);
+                    int id2 = result2.getInt(1);
                     boolean tipo = result2.getBoolean(3);
-                    String URL = result.getString(4);
+                    String URL = result2.getString(4);
                     MediaRevisar.add(new Media(id2, tipo, URL));
                 }                
                 NoticiasRevisar.add(new Noticias(id,title, descripcion,MediaRevisar));

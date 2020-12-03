@@ -33,7 +33,7 @@ public class LogOffController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getSession().invalidate();
-        response.sendRedirect("index.jsp");
+        response.sendRedirect(request.getContextPath() + "/indexController"); //Esta linea es para poner el controlador que te manda al indexs
     }
 
     /**

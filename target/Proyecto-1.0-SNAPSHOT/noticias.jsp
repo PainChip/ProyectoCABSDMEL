@@ -94,7 +94,7 @@
                 <a class="nav-link" href="index.jsp">Home </a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="noticias.jsp">Noticia <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="NoticiasPaginaController" Method"GET">Noticia <span class="sr-only">(current)</span></a>
               </li>
 
               <li class="nav-item dropdown">
@@ -102,7 +102,7 @@
                     Usuario
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item active" href="perfil.jsp">Perfil <span class="sr-only">(current)</span></a>
+                    <a id="perfi" class="dropdown-item active" href="PerfilController?id=<%=session.getAttribute("id")%>">Perfil</a>
                     <div class="dropdown-divider"></div>
                         <a id="cn"class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>    
                         <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>

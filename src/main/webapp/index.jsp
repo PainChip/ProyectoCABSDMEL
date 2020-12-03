@@ -99,10 +99,10 @@
                     Usuario
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a id="perfi" class="dropdown-item active" href="PerfilController">Perfil <span class="sr-only">(current)</span></a>
+                    <a id="perfi" class="dropdown-item active" href="PerfilController?id=<%=session.getAttribute("id")%>">Perfil <span class="sr-only">(current)</span></a>
                     <div class="dropdown-divider"></div>
                         <a id="cn"class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>                  
-                        <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
+                        <a id="edi" class="dropdown-item" href="RevisaNewsController" Method="GET">Edicion</a>
                     <div class="dropdown-divider"></div>
                     <a id="confi" class="dropdown-item" href="ConfiguracionController" Method="GET">Configuracion</a>
                   </div>
@@ -139,21 +139,21 @@
                   <img class="d-block w-100" src="https://www.dmarge.com/wp-content/uploads/2015/07/Daniel-Craig-Style-2-of-23.jpg" alt="First slide">
                   <div class="carousel-caption d-none d-md-block">
                     <h5>Prueba</h5>
-                    <a id="aCarrusel" href="noticiaEspecifica.jsp">Probando</a>
+                    <a id="aCarrusel" href="NoticiaEspecificaController">Probando</a>
                   </div>        
                 </div>
                 <div class="carousel-item">
                   <img class="d-block w-100" src="https://image.tmdb.org/t/p/original/iBpgcE03sG38noXuEqhmtwGdipB.jpg" alt="Second slide">
                   <div class="carousel-caption d-none d-md-block">
                     <h5>Prueba</h5>
-                    <a id="aCarrusel" href="noticiaEspecifica.jsp">Probando</a>
+                    <a id="aCarrusel" href="NoticiaEspecificaController">Probando</a>
                   </div>      
                 </div>
                 <div class="carousel-item">
                   <img class="d-block w-100" src="https://static0.srcdn.com/wordpress/wp-content/uploads/2019/12/Mulan-2020-movie-official-poster.jpg" alt="Third slide">
                   <div class="carousel-caption d-none d-md-block">
                     <h5>Prueba</h5>
-                    <a id="aCarrusel" href="noticiaEspecifica.jsp">Probando</a>
+                    <a id="aCarrusel" href="NoticiaEspecificaController">Probando</a>
                   </div>      
                 </div>
             </div>
@@ -175,7 +175,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="noticiaEspecifica.jsp" class="btn btn-primary">Detalles</a>
+                    <a href="NoticiaEspecificaController" class="btn btn-primary">Detalles</a>
                   </div>
                 </div>  
                 <div class="card col-12 col-sm-6 col-md-4" style="width: 18rem;">
@@ -183,7 +183,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="noticiaEspecifica.jsp" class="btn btn-primary">Detalles</a>
+                    <a href="NoticiaEspecificaController" class="btn btn-primary">Detalles</a>
                   </div>
                 </div>  
                 <div class="card col-12 col-sm-6 col-md-4" style="width: 18rem;">
@@ -191,7 +191,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="noticiaEspecifica.jsp" class="btn btn-primary">Detalles</a>
+                    <a href="NoticiaEspecificaController" class="btn btn-primary">Detalles</a>
                   </div>
                 </div>  
             </div>

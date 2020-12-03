@@ -5,6 +5,7 @@
 --%>
 <%@page import="java.util.List"%>
 <%@page import="com.pw.dbconnection.models.Noticias"%>
+<%@page import="com.pw.dbconnection.models.Media"%>
 <%
     List<Noticias> Revisar = (List<Noticias>) request.getAttribute("NewsRevisa");
 %>
@@ -103,7 +104,7 @@
                     Usuario
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a id="perfi" class="dropdown-item active" href="PerfilController">Perfil</a>
+                    <a id="perfi" class="dropdown-item active" href="PerfilController?id=<%=session.getAttribute("id")%>">Perfil</a>
                     <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>    
                         <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion<span class="sr-only">(current)</span></a>
@@ -136,10 +137,14 @@
             <div class="row row-cols-1 row-cols-md-3">
                 
                 <%
-                    for (Noticias Noticias : Revisar) {    
+                    for (Noticias Noticias : Revisar) { 
+                        List<Media> hola = Noticias.getMedia();
+                        Media primero = hola.get(0);
+                    
                 %>
+                
                 <Form action="" method="POST" class="card col-12 col-sm-6 col-md-4" style="width: 18rem; margin-bottom: 10px;">
-                        <img class="card-img-top" src="https://static0.srcdn.com/wordpress/wp-content/uploads/2019/12/Mulan-2020-movie-official-poster.jpg" alt="Card image cap">
+                    <img id="chikito" class="card-img-top" src="<%= primero.getUrl() %>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title" ><%= Noticias.getTitle()%></h5>
                             <p class="card-text"><%= Noticias.getDescription()%></p>

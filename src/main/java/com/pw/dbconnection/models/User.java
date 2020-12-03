@@ -30,12 +30,15 @@ public class User {
         this.idRol = idRol;
     }
 
-    public User(String foto, String face, String twitter, String insta) {
+    public User(String username, String foto, String face, String twitter, String insta) {
+        this.username = username;
         this.foto = foto;
         this.face = face;
         this.twitter = twitter;
         this.insta = insta;
     }
+
+
 
     
     public User(int id, String foto, String face, String twitter, String insta) {

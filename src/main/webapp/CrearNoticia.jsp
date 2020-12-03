@@ -102,12 +102,12 @@
                         Usuario
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item active" href="perfil.jsp">Perfil </a>
+                        <a id="perfi" class="dropdown-item active" href="PerfilController?id=<%=session.getAttribute("id")%>">Perfil <span class="sr-only">(current)</span></a>
                         <div class="dropdown-divider"></div>
                             <a id="cn"class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia <span class="sr-only">(current)</span> </a>  
                             <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="Configuracion.jsp">Configuracion</a>
+                         <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion<span class="sr-only">(current)</span></a>
                       </div>
                   </li>  
               </ul>

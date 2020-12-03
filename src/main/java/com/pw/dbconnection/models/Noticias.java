@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.pw.dbconnection.models;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -48,9 +49,7 @@ public class Noticias {
     public void setRespuesta(String Respuesta) {
         this.Respuesta = Respuesta;
     }
-    
-    
-    
+
     public List<Media> getMedia() {
         return Media;
     }
