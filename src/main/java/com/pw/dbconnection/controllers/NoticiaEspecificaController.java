@@ -31,6 +31,7 @@ public class NoticiaEspecificaController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String idNoticia = request.getParameter("id");
         request.getRequestDispatcher("noticiaEspecifica.jsp").forward(request, response);
     }
 

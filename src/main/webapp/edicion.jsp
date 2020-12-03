@@ -76,7 +76,6 @@
       });
     </script>
 </head>
-
 <body>
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -92,7 +91,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="index.jsp">Home </a>
+                <a class="nav-link" href="indexController">Home </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="NoticiasPaginaController" Method"GET">Noticia</a>
@@ -134,8 +133,7 @@
         <div class="jumbotron">
             <h4>Noticias Pendientes</h4>
             <hr class="my-4">
-            <div class="row row-cols-1 row-cols-md-3">
-                
+            <div class="row row-cols-1 row-cols-md-3">                
                 <%
                     for (Noticias Noticias : Revisar) { 
                         List<Media> hola = Noticias.getMedia();

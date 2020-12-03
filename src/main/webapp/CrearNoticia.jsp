@@ -90,7 +90,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" >
               <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="index.jsp">Home </a>
+                     <a class="nav-link" href="indexController">Home </a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="NoticiasPaginaController" Method"GET">Noticia</a>

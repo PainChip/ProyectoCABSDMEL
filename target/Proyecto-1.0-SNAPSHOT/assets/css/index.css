@@ -64,6 +64,9 @@ section .section-title {
 }
 #footer {
     background:#323232 !important;
+    position:absolute;
+    bottom:0;
+    width:100%;
 }
 #footer h5{
 	padding-left: 10px;
@@ -77,5 +80,10 @@ section .section-title {
     text-decoration: none !important;
     background-color: transparent;
 }
-
+ #chikito{
+      height:200px ;
+      width:250px ;
+      margin-left: auto;
+      margin-right: auto;
+ }
 

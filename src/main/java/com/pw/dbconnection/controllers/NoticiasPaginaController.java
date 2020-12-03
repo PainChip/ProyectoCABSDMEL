@@ -6,7 +6,9 @@
 package com.pw.dbconnection.controllers;
 
 import com.pw.dbconnection.dao.CategoryDAO;
+import com.pw.dbconnection.dao.NoticiasDAO;
 import com.pw.dbconnection.models.Category;
+import com.pw.dbconnection.models.Noticias;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -37,10 +39,13 @@ public class NoticiasPaginaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("CateID");
         List<Category> categories = CategoryDAO.getCategories();
         request.setAttribute("Categories", categories);
         
+        List<Noticias> news3 = NoticiasDAO.get3Noticias();
+        request.setAttribute("News3", news3);
+        List<Noticias> news6 = NoticiasDAO.getNoticias();
+        request.setAttribute("NewsDebajo", news6);
         request.getRequestDispatcher("noticias.jsp").forward(request, response);
     }
 
@@ -56,6 +61,15 @@ public class NoticiasPaginaController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String cateID = request.getParameter("CateID");
+        List<Category> categories = CategoryDAO.getCategories();
+        List<Noticias> news3 = NoticiasDAO.get3Noticias(Integer.parseInt(cateID,10));
+        request.setAttribute("News3", news3);
+        List<Noticias> news6 = NoticiasDAO.getNoticias(Integer.parseInt(cateID,10));
+        request.setAttribute("NewsDebajo", news6);
+        request.setAttribute("Categories", categories);
+        
+        request.getRequestDispatcher("noticias.jsp").forward(request, response);
     }
 
     /**

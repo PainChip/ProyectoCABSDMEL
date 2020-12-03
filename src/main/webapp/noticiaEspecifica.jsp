@@ -90,24 +90,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.jsp">Home</a>
+                <a class="nav-link" href="indexController">Home</a>
               </li>
               <li class="nav-item">
                  <a class="nav-link" href="NoticiasPaginaController" Method"GET">Noticia</a>
               </li>
-
-      
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Usuario
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item active" href="perfil.jsp">Perfil</a>
+                    <a id="perfi" class="dropdown-item active" href="PerfilController?id=<%=session.getAttribute("id")%>">Perfil <span class="sr-only">(current)</span></a>
                     <div class="dropdown-divider"></div>
                         <a id="cn"class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>
                         <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="Configuracion.jsp">Configuracion</a>
+                    <a id="confi" class="dropdown-item" href="ConfiguracionController" Method="GET">Configuracion</a>
                   </div>
               </li>  
               <li class="nav-item">

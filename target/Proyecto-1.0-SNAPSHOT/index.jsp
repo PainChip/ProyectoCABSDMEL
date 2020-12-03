@@ -3,11 +3,18 @@
     Created on : 4/10/2020, 02:00:58 PM
     Author     : magoc
 --%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.pw.dbconnection.models.Category"%>
+<%@page import="com.pw.dbconnection.models.Noticias"%>
+<%@page import="com.pw.dbconnection.models.Media"%>
+<%
+    List<Noticias> NoticiasCarrusel = (List<Noticias>) request.getAttribute("NewsCarrusel");
+    List<Noticias> NoticiasAbajo = (List<Noticias>) request.getAttribute("NewsDebajo");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +94,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="indexController">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="NoticiasPaginaController" Method"GET">Noticia</a>
@@ -135,27 +142,21 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
+                <%
+                    for (Noticias Noticias : NoticiasCarrusel) { 
+                        List<Media> hola = Noticias.getMedia();
+                        Media primero = hola.get(0);     
+                %>                
                 <div class="carousel-item active">
-                  <img class="d-block w-100" src="https://www.dmarge.com/wp-content/uploads/2015/07/Daniel-Craig-Style-2-of-23.jpg" alt="First slide">
+                  <img id="imgcarrusel" class="d-block w-100" src="<%=primero.getUrl()%>" alt="First slide">
                   <div class="carousel-caption d-none d-md-block">
-                    <h5>Prueba</h5>
-                    <a id="aCarrusel" href="NoticiaEspecificaController">Probando</a>
+                    <h5><%= Noticias.getTitle()%></h5>
+                    <a id="aCarrusel" href="NoticiaEspecificaController">Detalles</a>
                   </div>        
                 </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="https://image.tmdb.org/t/p/original/iBpgcE03sG38noXuEqhmtwGdipB.jpg" alt="Second slide">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Prueba</h5>
-                    <a id="aCarrusel" href="NoticiaEspecificaController">Probando</a>
-                  </div>      
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="https://static0.srcdn.com/wordpress/wp-content/uploads/2019/12/Mulan-2020-movie-official-poster.jpg" alt="Third slide">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Prueba</h5>
-                    <a id="aCarrusel" href="NoticiaEspecificaController">Probando</a>
-                  </div>      
-                </div>
+                <%
+                    }
+                %>                
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -170,30 +171,22 @@
       <!--Cards-->
       <div class="Destacados container-fluid">
             <div class="row row-cols-1 row-cols-md-3">
+                <%
+                    for (Noticias Noticias : NoticiasAbajo) { 
+                        List<Media> hola = Noticias.getMedia();
+                        Media primero = hola.get(0);     
+                %>                   
                 <div class="card col-12 col-sm-6 col-md-4" style="width: 18rem;">
-                  <img class="card-img-top" src="https://static0.srcdn.com/wordpress/wp-content/uploads/2019/12/Mulan-2020-movie-official-poster.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="NoticiaEspecificaController" class="btn btn-primary">Detalles</a>
+                  <img id="chikito" class="card-img-top" src="<%= primero.getUrl() %>" alt="Card image cap">
+                  <div  class="card-body">
+                    <h5 class="card-title"><%= Noticias.getTitle()%></h5>
+                    <p class="card-text"><%= Noticias.getDescription()%></p>
+                    <a href="NoticiaEspecificaController" class="btn btn-primary">Ver Mas</a>
                   </div>
-                </div>  
-                <div class="card col-12 col-sm-6 col-md-4" style="width: 18rem;">
-                  <img class="card-img-top" src="https://static0.srcdn.com/wordpress/wp-content/uploads/2019/12/Mulan-2020-movie-official-poster.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="NoticiaEspecificaController" class="btn btn-primary">Detalles</a>
-                  </div>
-                </div>  
-                <div class="card col-12 col-sm-6 col-md-4" style="width: 18rem;">
-                  <img class="card-img-top" src="https://static0.srcdn.com/wordpress/wp-content/uploads/2019/12/Mulan-2020-movie-official-poster.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="NoticiaEspecificaController" class="btn btn-primary">Detalles</a>
-                  </div>
-                </div>  
+                </div> 
+                <%
+                    }
+                %>                  
             </div>
       </div>
     </div>  
@@ -202,8 +195,17 @@
 	    	<p><u><a href="#">CineTicias</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
 	    	<p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="#" target="_blank">Sunlimetech</a></p>
 	    </div>
-	</section>
+    </section>
 
 </body>
-
+    <script>
+        var valor2 = <%= NoticiasAbajo.size()%>;
+        var valor1 = <%= NoticiasCarrusel.size()%>;
+        if(valor1 === 0){
+           document.getElementById("carouselExampleIndicators").style.display = "none"; 
+        }
+        if(valor1 !== 0){
+            document.getElementById("footer").style.position = "relative";
+        }
+    </script>
 </html>

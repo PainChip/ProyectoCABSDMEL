@@ -63,9 +63,10 @@ public class indexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*List<Noticias> news3 = NoticiasDAO.get3Noticias();
-        
-        request.setAttribute("News", news3);*/
+        List<Noticias> news3 = NoticiasDAO.get3Noticias();
+        request.setAttribute("NewsCarrusel", news3);
+        List<Noticias> news6 = NoticiasDAO.getNoticias();
+        request.setAttribute("NewsDebajo", news6);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

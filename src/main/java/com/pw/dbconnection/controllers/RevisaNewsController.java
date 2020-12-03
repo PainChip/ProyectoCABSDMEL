@@ -80,7 +80,7 @@ public class RevisaNewsController extends HttpServlet {
         request.setAttribute("Categories", categories);
         request.setAttribute("News", news);*/
         
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("indexController").forward(request, response);
     }
 
     /**
