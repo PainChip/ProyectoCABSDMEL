@@ -16,7 +16,10 @@ a:link {
     text-decoration: underline;
   }
 /* Footer*/
-
+#fotito{
+    height: 500px;
+    width: 100%;
+}
 /*@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');*/
 section {
     padding: 10px 0;
@@ -30,6 +33,9 @@ section .section-title {
 }
 #footer {
     background:#323232 !important;
+    position:relative;
+    bottom:0;
+    width:100%;
 }
 #footer h5{
 	padding-left: 10px;
@@ -45,35 +51,3 @@ section .section-title {
 }
 
 
-
-
-/* RedesSociales*/
-.fa {
-    padding: 10px !important;
-    font-size: 20px !important;
-    width: 70px !important;
-    height: auto !important;
-    text-align: center !important;
-    text-decoration: none !important;
-    margin: 5px 2px !important;
-  }
-  
-  .fa:hover {
-      opacity: 0.7 !important;
-  }
-  
-  .fa-facebook {
-    background: #3B5998 !important;
-    color: white !important;
-  }
-  
-  .fa-twitter {
-    background: #55ACEE !important;
-    color: white !important;
-  }
-  
-  .fa-instagram {
-    background: #125688 !important;
-    color: white !important;
-  }
-  

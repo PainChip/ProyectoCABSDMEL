@@ -26,6 +26,7 @@ public class Noticias {
     private Category category;
     private List<Media> Media;
 
+    
     public Noticias(int id, String title, String description, List<Media> Media) {
         this.id = id;
         this.title = title;

@@ -3,15 +3,34 @@
     Created on : Nov 12, 2020, 8:13:56 PM
     Author     : CARLOS
 --%>
-
+<%@page import="java.util.List"%>
+<%@page import="com.pw.dbconnection.models.Noticias"%>
+<%@page import="com.pw.dbconnection.models.Media"%>
+<%@page import="com.pw.dbconnection.models.Category"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    Noticias NoticiaSola = (Noticias) request.getAttribute("Noticion");
+    Category laCate=NoticiaSola.getCategory();
+    List<Media> hola = NoticiaSola.getMedia();
+    Media Video = null;
+  
+    for(Media LaMedia : hola){
+        if(LaMedia.isTipo() == false){
+            Video = LaMedia;
+        }
+    }
+    if(Video == null){
+        Video = new Media();
+        Video.setUrl("");
+    }
+    /*Aqui debe ir la de comentarios*/
+%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineTicias [Articulo]</title>
+    <title>CineTicias [Noticia]</title>
     <link rel="icon" href="assets/Recursos/Logo.jpg">
     <link rel="stylesheet" href="assets/css/noticiaEspecifica.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -28,7 +47,12 @@
           var varFoto = "<%= session.getAttribute("foto")%>";
           var varRol = "<%= session.getAttribute("rol")%>";   
           var varRolID = "<%= session.getAttribute("rolId")%>";
+          var varVideo = "<%= Video.getUrl()%>";
 
+          if(varVideo === "")
+          {
+            document.getElementById("Videito").style.display = "none"; 
+          } 
           if(varId !== null)
           {
             $("#EstaONo").remove();
@@ -108,14 +132,12 @@
                     <a id="confi" class="dropdown-item" href="ConfiguracionController" Method="GET">Configuracion</a>
                   </div>
               </li>  
-              <li class="nav-item">
-                  <a class="nav-link" href="login_register.jsp">Login/Registrar</a>
-              </li>
+
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+              <form action="BuscadorController" method="GET" class="form-inline my-2 my-lg-0">
+                    <input name="Botonbusca" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
             <form id="EstaONo" action="login_register.jsp" class="form-inline my-2 my-lg-0" style="padding-left: 50px; padding-right: 10px;">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login/Registrar</button>
             </form>
@@ -131,26 +153,38 @@
     
     <br>
     <div class="container">
-        <h1 style="text-align: center;">Nombre de la noticia</h1>
+        <h1 style="text-align: center;"><%=NoticiaSola.getTitle()%></h1>
         <hr class="my-4">
-            <h4>Categoria</h4>
-            <p>Descripcion corta</p>
+            <h4><%=laCate.getName()%></h4>
+            <p><%=NoticiaSola.getDescription()%></p>
         <hr class="my-4">
         <!-- Video de la noticia-->
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+        <div id="Videito" class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="<%=Video.getUrl()%>" allowfullscreen></iframe>
         </div>
+            <div class="row row-cols-1 row-cols-md-3">
+                <%
+                   for (Media LaMedia2 : hola) 
+                    {
+                        if(LaMedia2.isTipo() == true)
+                        {
+                       
+                %>                   
+                <div class="card col-12 col-sm-6 col-md-4" style="width: 18rem;">
+                  <img id="chikito" class="card-img-top" src="<%= LaMedia2.getUrl() %>" alt="Card image cap">
+                </div> 
+                <%
+                        }
+                    }
+                %>                  
+            </div>
         <br>
         <!--Noticia en si-->
-        <section>
-            <h2>WWF's Symbol</h2>
-            <p>The Panda has become the symbol of WWF. The well-known panda logo of WWF originated from a panda named Chi Chi that was transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.</p>
-            <p>The Panda has become the symbol of WWF. The well-known panda logo of WWF originated from a panda named Chi Chi that was transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.</p>
-            <p>The Panda has become the symbol of WWF. The well-known panda logo of WWF originated from a panda named Chi Chi that was transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.</p>
-            <p>The Panda has become the symbol of WWF. The well-known panda logo of WWF originated from a panda named Chi Chi that was transferred from the Beijing Zoo to the London Zoo in the same year of the establishment of WWF.</p>
+        <section>   
+            <p><%=NoticiaSola.getContenido()%></p>
         </section>
         <br>
-        <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5" data-width="100%"></div>
+        
     </div>  
     <section id="footer">
 	    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">         

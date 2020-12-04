@@ -78,7 +78,7 @@ public class CategoryDAO {
         Connection con = null;
         try {
             con = DbConnection.getConnection();
-            String sql = "CALL SP_VerAllCat(?);";
+            String sql = "CALL SP_VerCat(?);";
             CallableStatement statement = con.prepareCall(sql);
             statement.setInt(1, idCategory);
             ResultSet result = statement.executeQuery();

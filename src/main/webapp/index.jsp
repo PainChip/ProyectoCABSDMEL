@@ -90,7 +90,6 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-       
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
           <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
@@ -115,21 +114,18 @@
                   </div>
               </li>  
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form action="BuscadorController" method="GET" class="form-inline my-2 my-lg-0">
+                <input name="Botonbusca" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             <form id="EstaONo" action="login_register.jsp" class="form-inline my-2 my-lg-0" style="padding-left: 50px; padding-right: 10px;">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login/Registrar</button>                
             </form>
-
             <img id="imagenUser" src="http://cdn.onlinewebfonts.com/svg/img_506739.png" alt="ImagenPerfil" width="50" height="30" style="padding-left: 10px; padding-right: 10px;">
             <a id="NombreUser" style="color: #ecfdf9">Username</a>
-            
             <form id="LogOFF" action="LogOffController" method="POST" class="form-inline my-2 my-lg-0" style="padding-left: 20px; padding-right: 10px;">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
             </form>
-
         </div>
     </nav>
     <br>
@@ -151,7 +147,7 @@
                   <img id="imgcarrusel" class="d-block w-100" src="<%=primero.getUrl()%>" alt="First slide">
                   <div class="carousel-caption d-none d-md-block">
                     <h5><%= Noticias.getTitle()%></h5>
-                    <a id="aCarrusel" href="NoticiaEspecificaController">Detalles</a>
+                    <a id="aCarrusel" href="NoticiaEspecificaController?id=<%=Noticias.getId()%>">Detalles</a>
                   </div>        
                 </div>
                 <%
@@ -181,7 +177,7 @@
                   <div  class="card-body">
                     <h5 class="card-title"><%= Noticias.getTitle()%></h5>
                     <p class="card-text"><%= Noticias.getDescription()%></p>
-                    <a href="NoticiaEspecificaController" class="btn btn-primary">Ver Mas</a>
+                    <a href="NoticiaEspecificaController?id=<%=Noticias.getId()%>" class="btn btn-primary">Ver Mas</a>
                   </div>
                 </div> 
                 <%

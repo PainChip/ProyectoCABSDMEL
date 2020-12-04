@@ -5,8 +5,11 @@
  */
 package com.pw.dbconnection.controllers;
 
+import com.pw.dbconnection.dao.NoticiasDAO;
+import com.pw.dbconnection.models.Noticias;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +34,13 @@ public class NoticiaEspecificaController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String idNoticia = request.getParameter("id");
+        String idNoticia = request.getParameter("id");        
+        Noticias noti = NoticiasDAO.getNoticiaEspecifica(Integer.parseInt(idNoticia,10));
+        request.setAttribute("Noticion", noti);
+        /*
+        Parte de los comentarios
+        */
+           
         request.getRequestDispatcher("noticiaEspecifica.jsp").forward(request, response);
     }
 
