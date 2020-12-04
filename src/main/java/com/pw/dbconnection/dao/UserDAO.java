@@ -206,4 +206,31 @@ public class UserDAO {
 
         return news;
     }
+    
+    public static User getUser(int idUser) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("call getUser(?)");
+            statement.setInt(1, idUser);
+
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt(1);
+                String username = result.getString("username");
+                return new User(id, username);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
 }

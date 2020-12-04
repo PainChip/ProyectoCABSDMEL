@@ -157,6 +157,9 @@
         <hr class="my-4">
             <h4><%=laCate.getName()%></h4>
             <p><%=NoticiaSola.getDescription()%></p>
+            <form action="FavoritoController?idNoti=<%=NoticiaSola.getId()%>" method="POST">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Agrega Favorito</button>
+            </form>
         <hr class="my-4">
         <!-- Video de la noticia-->
         <div id="Videito" class="embed-responsive embed-responsive-16by9">
@@ -184,8 +187,34 @@
             <p><%=NoticiaSola.getContenido()%></p>
         </section>
         <br>
-        
-    </div>  
+        <div class="col-12 commentaries p-3">
+            <h2>Comentarios</h2>
+            <form method="POST" action="CommentaryController" >
+                <div class="form-group">
+                    <label for="commentary">Contenido</label>
+                    <textarea class="form-control" name="commentary" id="commentary"></textarea>
+                    <input type="hidden" name="idNews" value="<%= element.getId()%>">
+                </div> 
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Comentar">
+                </div>
+            </form>
+            <%
+                for (Commentary commentary : commentaries) {
+            %>
+            <div class="media">
+                <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId()%>&idNews=<%= element.getId()%>">Eliminar</a>
+                <img src="https://cdna.artstation.com/p/assets/images/images/032/077/550/large/citemer-liu-xiao.jpg?1605413247" class="mr-3" alt="...">
+                <div class="media-body">
+                    <h5 class="mt-0"><%= commentary.getUser().getUsername()%></h5>
+                    <%= commentary.getContent()%>
+                </div>
+            </div>
+            <%
+                }
+            %>
+        </div>
+    </div>   
     <section id="footer">
 	    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">         
 	    	<p><u><a href="#">CineTicias</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>

@@ -49,5 +49,12 @@ section .section-title {
     text-decoration: none !important;
     background-color: transparent;
 }
+.commentaries {
+    border-radius: 5px;
+    background-color: #c3c3c3;
+}
 
-
+.commentaries .media img {
+    max-width: 64px;
+    max-height: 64px;
+}

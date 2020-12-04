@@ -38,8 +38,9 @@ public class User {
         this.insta = insta;
     }
 
-
-
+    public User(int id) {
+        this.id = id;
+    }
     
     public User(int id, String foto, String face, String twitter, String insta) {
         this.id = id;

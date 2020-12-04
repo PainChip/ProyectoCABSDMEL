@@ -3,11 +3,14 @@
     Created on : Nov 12, 2020, 8:14:39 PM
     Author     : CARLOS
 --%>
-
+<%@page import="java.util.List"%>
 <%@page import="com.pw.dbconnection.models.User"%>
+<%@page import="com.pw.dbconnection.models.Noticias"%>
+<%@page import="com.pw.dbconnection.models.Media"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     User usuario = (User) request.getAttribute("resultadito");
+    List<Noticias> NoticiasAbajo = (List<Noticias>) request.getAttribute("resulFav");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,40 +152,33 @@
         </div>
         <div class="jumbotron">
             <h4>Favoritos</h4>
-
             <hr class="my-4">
+            <%
+                for (Noticias Noticias : NoticiasAbajo) {
+                    List<Media> hola = Noticias.getMedia();
+                    Media primero = hola.get(0);
+            %>  
             <div class="d-flex align-items-center">
-                <img id="imagenoticia" class="card-img-top" src="https://vignette.wikia.nocookie.net/disney/images/4/4b/Mulan_2020_theatrical_poster.jpeg/revision/latest?cb=20191204223834" alt="Card image cap">
+                <img id="imagenoticia" class="card-img-top" src="<%= primero.getUrl()%>" alt="Card image cap">
                 <section style="padding-left: 1%;">
-                    <h6>Titulo Noticia</h6>
+                    <h6><%= Noticias.getTitle()%></h6>
                     <hr class="my-4">
-                    <p>Descripcion de noticia</p>
-                    <a href="noticiaEspecifica.jsp">Clic para ver</a>               
+                    <p><%= Noticias.getDescription()%></p>
+                    <a href="NoticiaEspecificaController?id=<%=Noticias.getId()%>">Clic para ver</a>               
                 </section>
             </div>
             <br>
-            <div class="d-flex align-items-center">
-                <img id="imagenoticia" class="card-img-top" src="https://vignette.wikia.nocookie.net/disney/images/4/4b/Mulan_2020_theatrical_poster.jpeg/revision/latest?cb=20191204223834" alt="Card image cap">
-                <section style="padding-left: 1%;">
-                    <h6>Titulo Noticia</h6>
-                    <hr class="my-4">
-                    <p>Descripcion de noticia</p>
-                    <a href="noticiaEspecifica.jsp">Clic para ver</a>               
-                </section>
-            </div> 
-
+            <%
+                }
+            %> 
         </div>
-
-
     </div>  
-  
     <section id="footer">
 	    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">         
 	    	<p><u><a href="#">CineTicias</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
 	    	<p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="#" target="_blank">Sunlimetech</a></p>
 	    </div>
-	</section>
-
+    </section>
 </body>
 
 </html>

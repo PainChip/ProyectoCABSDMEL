@@ -150,7 +150,7 @@ public class NoticiasDAO {
         return news;
     }
     
-        public static List<Noticias> getNoticias(String buscador) {
+    public static List<Noticias> getNoticias(String buscador) {
         List<Noticias> news = new ArrayList<>();
 
         Connection con = null;
