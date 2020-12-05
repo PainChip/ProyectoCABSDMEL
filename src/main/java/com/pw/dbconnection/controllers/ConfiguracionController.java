@@ -84,7 +84,7 @@ public class ConfiguracionController extends HttpServlet {
         User newNews = new User(id, linkinsertando , face, twitter, insta);
 
         UserDAO.RedesFotoUser(newNews);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("indexController").forward(request, response);
         
     }
 

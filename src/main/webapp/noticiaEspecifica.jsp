@@ -15,8 +15,10 @@
      List<Comentario> commentaries = (List<Comentario>) request.getAttribute("Commentaries");
     Category laCate=NoticiaSola.getCategory();
     List<Media> hola = NoticiaSola.getMedia();
-    Media Video = null;
-  
+    Media Video = null; 
+    String userName=(String)session.getAttribute("username");
+
+    String valor ="hola";
     for(Media LaMedia : hola){
         if(LaMedia.isTipo() == false){
             Video = LaMedia;
@@ -62,6 +64,7 @@
             $("#imagenUser").src= varFoto;
             document.getElementById("NombreUser").innerHTML = varUser;
             document.getElementById("Tunombre").style.display = "none";
+
             document.getElementById("comenid").innerHTML = varId;
             
           }else{
@@ -247,7 +250,13 @@
                     <div style="padding-left: 20px" class="form-group">
                         <textarea class="form-control" name="idusuario" id="comenid" style="display: none"></textarea>
                         <textarea class="form-control" name="idparent" id="comenparent" style="display: none"><%= commentary.getId()%></textarea>
-                        <input type="text" class="form-control" name="commenName" id="Tunombre" placeholder="Nombre (si no coloca nada sera Anonimo)">
+                        <%
+                            if (userName==null) {
+                        %>
+                            <input type="text" class="form-control" name="commenName" id="Tunombre2" placeholder="Nombre (si no coloca nada sera Anonimo)">
+                        <%
+                            }
+                        %>
                         <textarea class="form-control" name="commentary" id="commentary"></textarea>
                         <input type="hidden" name="idNews" value="<%= NoticiaSola.getId()%>">
                     </div> 
