@@ -39,7 +39,7 @@ public class indexController extends HttpServlet {
             throws ServletException, IOException {
         List<Noticias> news3 = NoticiasDAO.get3Noticias();
         request.setAttribute("NewsCarrusel", news3);
-        List<Noticias> news6 = NoticiasDAO.getNoticias();
+        List<Noticias> news6 = NoticiasDAO.getIndexNoticias();
         request.setAttribute("NewsDebajo", news6);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }

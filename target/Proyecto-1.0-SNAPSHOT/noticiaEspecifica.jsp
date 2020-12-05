@@ -111,7 +111,7 @@
 <body>
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.jsp">
+        <a class="navbar-brand" href="indexController">
             <img src="assets/Recursos/Logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
             CineTicias
         </a>
