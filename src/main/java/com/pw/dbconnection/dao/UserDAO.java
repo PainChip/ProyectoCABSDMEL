@@ -211,14 +211,15 @@ public class UserDAO {
         Connection con = null;
         try {
             con = DbConnection.getConnection();
-            CallableStatement statement = con.prepareCall("call getUser(?)");
+            CallableStatement statement = con.prepareCall("call SP_VerURID(?)");
             statement.setInt(1, idUser);
 
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 int id = result.getInt(1);
-                String username = result.getString("username");
-                return new User(id, username);
+                String username = result.getString(2);
+                String imagen = result.getString(3);
+                return new User(id, username,imagen);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

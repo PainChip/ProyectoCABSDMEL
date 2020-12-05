@@ -3,6 +3,8 @@
     Created on : Nov 12, 2020, 8:13:56 PM
     Author     : CARLOS
 --%>
+<%@page import="com.pw.dbconnection.models.User"%>
+<%@page import="com.pw.dbconnection.models.Comentario"%>
 <%@page import="java.util.List"%>
 <%@page import="com.pw.dbconnection.models.Noticias"%>
 <%@page import="com.pw.dbconnection.models.Media"%>
@@ -10,6 +12,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     Noticias NoticiaSola = (Noticias) request.getAttribute("Noticion");
+     List<Comentario> commentaries = (List<Comentario>) request.getAttribute("Commentaries");
     Category laCate=NoticiaSola.getCategory();
     List<Media> hola = NoticiaSola.getMedia();
     Media Video = null;
@@ -58,11 +61,16 @@
             $("#EstaONo").remove();
             $("#imagenUser").src= varFoto;
             document.getElementById("NombreUser").innerHTML = varUser;
+            document.getElementById("Tunombre").style.display = "none";
+            document.getElementById("comenid").innerHTML = varId;
             
           }else{
                $("#imagenUser").remove();
                $("#NombreUser").remove();
                $("#LogOFF").remove();
+               document.getElementById("comenid").innerHTML = "";
+               document.getElementById("Tunombre").style.display = "block";
+               document.getElementById("botonfav").style.display = "none";
           }
           if(varRol === "Usuario" || varRol === "null" )
           {
@@ -98,8 +106,6 @@
 </head>
 
 <body>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0&appId=3496486320412131&autoLogAppEvents=1" nonce="WNPCBicN"></script>
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="index.jsp">
@@ -155,11 +161,13 @@
     <div class="container">
         <h1 style="text-align: center;"><%=NoticiaSola.getTitle()%></h1>
         <hr class="my-4">
+        <div>
             <h4><%=laCate.getName()%></h4>
             <p><%=NoticiaSola.getDescription()%></p>
-            <form action="FavoritoController?idNoti=<%=NoticiaSola.getId()%>" method="POST">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Agrega Favorito</button>
+            <form  action="FavoritoController?idNoti=<%=NoticiaSola.getId()%>" method="POST">
+                <button id="botonfav" class=" btn btn-outline-success" type="submit" onclick="comprueba()" >Agrega Favorito</button>
             </form>
+        </div>    
         <hr class="my-4">
         <!-- Video de la noticia-->
         <div id="Videito" class="embed-responsive embed-responsive-16by9">
@@ -189,34 +197,71 @@
         <br>
         <div class="col-12 commentaries p-3">
             <h2>Comentarios</h2>
-            <form method="POST" action="CommentaryController" >
+            <form method="POST" action="ComentariosController" >
                 <div class="form-group">
                     <label for="commentary">Contenido</label>
+                    <textarea class="form-control" name="idusuario" id="comenid" style="display: none"></textarea>
+                    <input type="text" class="form-control" name="commenName" id="Tunombre" placeholder="Nombre (si no coloca nada sera Anonimo)">
                     <textarea class="form-control" name="commentary" id="commentary"></textarea>
-                    <input type="hidden" name="idNews" value="<%= element.getId()%>">
+                    <input type="hidden" name="idNews" value="<%= NoticiaSola.getId()%>">
                 </div> 
                 <div class="form-group">
-                    <input type="submit" class="btn btn-success" value="Comentar">
+                    <input type="submit" class="btn btn-success" value="Comentar" >
                 </div>
             </form>
             <%
-                for (Commentary commentary : commentaries) {
+                for (Comentario commentary : commentaries) {
+                String usuario = commentary.getUser().getFoto();
+                if(null == usuario){
+                    usuario = "http://cdn.onlinewebfonts.com/svg/img_506739.png";
+                }
+                List<Comentario> hola2 = commentary.getAnswers();
             %>
-            <div class="media">
-                <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId()%>&idNews=<%= element.getId()%>">Eliminar</a>
-                <img src="https://cdna.artstation.com/p/assets/images/images/032/077/550/large/citemer-liu-xiao.jpg?1605413247" class="mr-3" alt="...">
+            <div class="media" style="padding-bottom: 15px">
+                <img src="<%= usuario %>" class="mr-3" alt="...">
                 <div class="media-body">
                     <h5 class="mt-0"><%= commentary.getUser().getUsername()%></h5>
                     <%= commentary.getContent()%>
                 </div>
+                <a style="display: none"class="btn btn-danger my-auto" href="DeleteCommentaryController?id=<%= commentary.getId()%>&idNews=<%= NoticiaSola.getId()%>">Eliminar</a>
             </div>
+                <%
+                    for (Comentario respuestitas : hola2) {
+                    String usuario2 = commentary.getUser().getFoto();
+                    if(null == usuario2){
+                        usuario2 = "http://cdn.onlinewebfonts.com/svg/img_506739.png";
+                    }
+                %>
+                    <div class="media" style="padding-left: 20px; padding-bottom: 15px;">
+                        <img src="<%= usuario2 %>" class="mr-3" alt="...">
+                        <div class="media-body">
+                            <h5 class="mt-0"><%= respuestitas.getUser().getUsername()%></h5>
+                            <%= respuestitas.getContent()%>
+                        </div>
+                        <a style="display: none"class="btn btn-danger my-auto" href="DeleteCommentaryController?id=<%= respuestitas.getId()%>&idNews=<%= NoticiaSola.getId()%>">Eliminar</a>
+                    </div>
+                <%             
+                    }
+                %>
+                <form method="GET" action="ComentariosController" >
+                    <div style="padding-left: 20px" class="form-group">
+                        <textarea class="form-control" name="idusuario" id="comenid" style="display: none"></textarea>
+                        <textarea class="form-control" name="idparent" id="comenparent" style="display: none"><%= commentary.getId()%></textarea>
+                        <input type="text" class="form-control" name="commenName" id="Tunombre" placeholder="Nombre (si no coloca nada sera Anonimo)">
+                        <textarea class="form-control" name="commentary" id="commentary"></textarea>
+                        <input type="hidden" name="idNews" value="<%= NoticiaSola.getId()%>">
+                    </div> 
+                    <div style="padding-left: 20px" class="form-group">
+                        <input type="submit" class="btn btn-success" value="Responder" >
+                    </div>
+                </form>
             <%
                 }
             %>
         </div>
     </div>   
-    <section id="footer">
-	    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">         
+        <section id="footer" style="margin-top: 20px">
+	<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">         
 	    	<p><u><a href="#">CineTicias</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
 	    	<p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="#" target="_blank">Sunlimetech</a></p>
         </div>

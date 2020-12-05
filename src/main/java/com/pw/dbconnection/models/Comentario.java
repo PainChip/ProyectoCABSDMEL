@@ -32,6 +32,12 @@ public class Comentario {
         this.content = content;
     }
 
+    public Comentario(String content, int idNews, User user) {
+        this.content = content;
+        this.idNews = idNews;
+        this.user = user;
+    }
+
     public Comentario(String content, int idNews, User user, int parent) {
         this.content = content;
         this.idNews = idNews;

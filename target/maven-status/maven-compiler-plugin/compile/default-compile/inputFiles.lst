@@ -3,11 +3,13 @@ C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyect
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\dao\CategoryDAO.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\utils\DbConnection.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\controllers\FavoritoController.java
+C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\models\Comentario.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\controllers\LogInController.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\models\Media.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\controllers\indexController.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\dao\MediaDAO.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\controllers\LogOffController.java
+C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\dao\ComentarioDAO.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\models\Category.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\dao\NoticiasDAO.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\models\Favorito.java
@@ -17,6 +19,7 @@ C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyect
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\controllers\NoticiaEspecificaController.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\models\Noticias.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\dao\FavoritoDAO.java
+C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\controllers\ComentariosController.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\controllers\BuscadorController.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\controllers\PerfilController.java
 C:\Users\CARLOS\Documents\7mo Semestre\Programacion Web\PROYECTOCABSDMEL\Proyecto\src\main\java\com\pw\dbconnection\controllers\RevisaNewsController.java

@@ -35,12 +35,25 @@ public class ComentariosController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();  
-        int rolID = (int)session.getAttribute("id");  
+        
+        String elid = request.getParameter("idusuario");  
+        User usuario = new User();
+        String elname;
+        if(elid.equals("") == true ){
+            elname = request.getParameter("commenName");
+            if(elname.equals("") == true){
+               elname = "Anonimo";
+            }
+            usuario.setUsername(elname);
+        }else{
+            usuario.setId(Integer.parseInt(elid));
+            usuario.setUsername("");
+        }
+        
         String content = request.getParameter("commentary");
         String idNews = request.getParameter("idNews");
         
-        //ComentarioDAO.insertCommentary(new Comentario(content, Integer.parseInt(idNews), new User(rolID), -1));
+        ComentarioDAO.insertCommentary(new Comentario(content, Integer.parseInt(idNews), usuario));
         
         request.getRequestDispatcher("NoticiaEspecificaController?id=" + idNews).forward(request, response);
     }
@@ -57,7 +70,29 @@ public class ComentariosController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+               
+        String elid = request.getParameter("idusuario");  
+        String elparent = request.getParameter("idparent");  
+
+        User usuario = new User();
+        String elname;
+        if(elid.equals("") == true ){
+            elname = request.getParameter("commenName");
+            if(elname.equals("") == true){
+               elname = "Anonimo";
+            }
+            usuario.setUsername(elname);
+        }else{
+            usuario.setId(Integer.parseInt(elid));
+            usuario.setUsername("");
+        }
+        
+        String content = request.getParameter("commentary");
+        String idNews = request.getParameter("idNews");
+        
+        ComentarioDAO.insertRespuesta(new Comentario(content, Integer.parseInt(idNews), usuario, Integer.parseInt(elparent)));
+        
+        request.getRequestDispatcher("NoticiaEspecificaController?id=" + idNews).forward(request, response);
     }
 
     /**

@@ -5,7 +5,9 @@
  */
 package com.pw.dbconnection.controllers;
 
+import com.pw.dbconnection.dao.ComentarioDAO;
 import com.pw.dbconnection.dao.NoticiasDAO;
+import com.pw.dbconnection.models.Comentario;
 import com.pw.dbconnection.models.Noticias;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,9 +39,9 @@ public class NoticiaEspecificaController extends HttpServlet {
         String idNoticia = request.getParameter("id");        
         Noticias noti = NoticiasDAO.getNoticiaEspecifica(Integer.parseInt(idNoticia,10));
         request.setAttribute("Noticion", noti);
-        /*
-        Parte de los comentarios
-        */
+        List<Comentario> commentaries = ComentarioDAO.getCommentaries(Integer.parseInt(idNoticia, 10));
+
+        request.setAttribute("Commentaries", commentaries);
            
         request.getRequestDispatcher("noticiaEspecifica.jsp").forward(request, response);
     }
