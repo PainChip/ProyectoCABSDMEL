@@ -61,8 +61,9 @@
           if(varId !== null)
           {
             $("#EstaONo").remove();
-            $("#imagenUser").src= varFoto;
+            document.getElementById("imagenUser").src = varFoto;
             document.getElementById("NombreUser").innerHTML = varUser;
+            
             document.getElementById("Tunombre").style.display = "none";
 
             document.getElementById("comenid").innerHTML = varId;
@@ -248,7 +249,7 @@
                 %>
                 <form method="GET" action="ComentariosController" >
                     <div style="padding-left: 20px" class="form-group">
-                        <textarea class="form-control" name="idusuario" id="comenid" style="display: none"></textarea>
+                        <textarea class="form-control" name="idusuario" id="comenid" style="display: none"><%= session.getAttribute("id")%></textarea>
                         <textarea class="form-control" name="idparent" id="comenparent" style="display: none"><%= commentary.getId()%></textarea>
                         <%
                             if (userName==null) {

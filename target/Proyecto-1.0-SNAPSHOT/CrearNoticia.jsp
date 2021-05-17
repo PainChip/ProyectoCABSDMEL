@@ -35,7 +35,7 @@
           if(varId !== null)
           {
             $("#EstaONo").remove();
-            $("#imagenUser").src= varFoto;
+            document.getElementById("imagenUser").src = varFoto;
             document.getElementById("NombreUser").innerHTML = varUser;
             
           }else{
@@ -131,7 +131,7 @@
         <br>
         <div class="container">
             <div class="row">
-                <form class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController">
+                <form class="col-12" method="POST" action="AddNewsController" enctype="multipart/form-data">
                     <h1>Nueva Noticia</h1>
                     <div class="form-group">
                         <label for="title" >Titulo</label>
@@ -186,9 +186,12 @@
                         <input type="submit" class="btn btn-primary"  value="Enviar" onclick="ComprobarTodo()">
                     </div>
                 </form>
+                       
                         
             </div>
         </div>
+        <br>
+        <br>
         <section id="footer">
 	    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">         
 	    	<p><u><a href="#">CineTicias</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>

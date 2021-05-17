@@ -34,7 +34,7 @@
           if(varId !== null)
           {
             $("#EstaONo").remove();
-            $("#imagenUser").src= varFoto;
+            document.getElementById("imagenUser").src = varFoto;
             document.getElementById("NombreUser").innerHTML = varUser;
             
           }else{
@@ -85,45 +85,40 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent" >
               <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
+                <li class="nav-item">
                      <a class="nav-link" href="indexController">Home </a>
-                  </li>
-                  <li class="nav-item">
+                </li>
+                <li class="nav-item">
                      <a class="nav-link" href="NoticiasPaginaController" Method"GET">Noticia</a>
-                  </li>
-
-
-                  <li class="nav-item dropdown active">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Usuario
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a id="perfi" class="dropdown-item active" href="PerfilController?id=<%=session.getAttribute("id")%>">Perfil</a>
                         <div class="dropdown-divider"></div>
                             <a id="cn"class="dropdown-item" href="AddNewsController" Method="GET" >Crear noticia</a>                   
                             <a id="edi" class="dropdown-item" href="RevisaNewsController"  Method="GET">Edicion</a>
                         <div class="dropdown-divider"></div>
                         <a id="confi" class="dropdown-item" href="ConfiguracionController" Method="GET">Configuracion <span class="sr-only">(current)</span></a>
-                      </div>
-                  </li>  
-                  <form action="BuscadorController" method="GET" class="form-inline my-2 my-lg-0">
-                      <input name="Botonbusca" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
+                    </div>
+                </li>  
+              </ul>
+              <form action="BuscadorController" method="GET" class="form-inline my-2 my-lg-0">
+                <input name="Botonbusca" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
               <form id="EstaONo" action="login_register.jsp" class="form-inline my-2 my-lg-0" style="padding-left: 50px; padding-right: 10px;">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login/Registrar</button>
               </form>
-
               <img id="imagenUser" src="http://cdn.onlinewebfonts.com/svg/img_506739.png" alt="ImagenPerfil" width="50" height="30" style="padding-left: 10px; padding-right: 10px;">
               <a id="NombreUser" style="color: #ecfdf9">Username</a>
-
               <form id="LogOFF" action="LogOffController" method="POST" class="form-inline my-2 my-lg-0" style="padding-left: 20px; padding-right: 10px;">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button>
               </form>
-              
             </div>
         </nav>
         <br>

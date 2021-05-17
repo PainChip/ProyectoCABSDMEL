@@ -37,7 +37,7 @@
           if(varId !== null)
           {
             $("#EstaONo").remove();
-            $("#imagenUser").src= varFoto;
+            document.getElementById("imagenUser").src = varFoto;
             document.getElementById("NombreUser").innerHTML = varUser;
             
           }else{

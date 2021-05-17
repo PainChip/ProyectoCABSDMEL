@@ -43,6 +43,16 @@ public class indexController extends HttpServlet {
         request.setAttribute("NewsDebajo", news6);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<Noticias> news3 = NoticiasDAO.get3Noticias();
+        request.setAttribute("NewsCarrusel", news3);
+        List<Noticias> news6 = NoticiasDAO.getIndexNoticias();
+        request.setAttribute("NewsDebajo", news6);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+    }
+
 
 
     /**

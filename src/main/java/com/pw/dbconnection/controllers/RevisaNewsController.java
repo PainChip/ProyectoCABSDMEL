@@ -74,12 +74,6 @@ public class RevisaNewsController extends HttpServlet {
              NoticiasDAO.insertNoticiaAceptado(newNews);
         }
         
-        /*
-        List<Category> categories = CategoryDAO.getCategories();
-        List<Noticias> news = NoticiasDAO.getNoticias();
-        request.setAttribute("Categories", categories);
-        request.setAttribute("News", news);*/
-        
         request.getRequestDispatcher("indexController").forward(request, response);
     }
 

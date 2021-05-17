@@ -20,36 +20,6 @@ import java.util.logging.Logger;
  */
 public class UserDAO {
     
-//    CREATE TABLE `pw02`.`user` (
-//    `idUser` INT NOT NULL AUTO_INCREMENT,
-//    `username` VARCHAR(45) NULL,
-//    `password` VARCHAR(45) NULL,
-//    PRIMARY KEY (`idUser`),
-//    UNIQUE INDEX `idUser_UNIQUE` (`idUser` ASC) VISIBLE,
-//    UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
-    
-    
-//    USE `pw02`;
-//    DROP procedure IF EXISTS `signIn`;
-//
-//    DELIMITER $$
-//    USE `pw02`$$
-//    CREATE PROCEDURE `signIn` (
-//    IN `pUsername` varchar(45),
-//    IN `pPassword` varchar(45)
-//    )
-//    BEGIN
-//    INSERT INTO `user`
-//    (`username`,
-//    `password`)
-//    VALUES
-//    (pUsername,
-//    pPassword);
-//
-//    END$$
-//
-//    DELIMITER ;
-
 
     public static int signInUser(User user) {
         Connection con = null;
@@ -74,28 +44,6 @@ public class UserDAO {
         }
         return 0;
     }
-    
-//    USE `pw02`;
-//    DROP procedure IF EXISTS `logIn`;
-//
-//    DELIMITER $$
-//    USE `pw02`$$
-//    CREATE PROCEDURE `logIn` (
-//    IN `pUsername` varchar(45),
-//    IN `pPassword` varchar(45)
-//    )
-//    BEGIN
-//    SELECT u.`idUser` ID,
-//        u.`username`
-//    FROM `user` u
-//    WHERE
-//            u.username = pUsername
-//    AND
-//            u.password = pPassword;
-//    END$$
-//
-//    DELIMITER ;
-
 
     public static User logInUser(User user) {
         Connection con = null;

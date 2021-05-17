@@ -36,7 +36,7 @@
           if(varId !== null)
           {
             $("#EstaONo").remove();
-            $("#imagenUser").src= varFoto;
+            document.getElementById("imagenUser").src = varFoto;
             document.getElementById("NombreUser").innerHTML = varUser;
             
           }else{
@@ -141,13 +141,12 @@
                     
                 %>
                 
-                <Form action="" method="POST" class="card col-12 col-sm-6 col-md-4" style="width: 18rem; margin-bottom: 10px;">
+                <Form action="RevisaNewsController?NotID=<%= Noticias.getId()%>" method="POST" class="card col-12 col-sm-6 col-md-4" style="width: 18rem; margin-bottom: 10px;">
                     <img id="chikito" class="card-img-top" src="<%= primero.getUrl() %>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title" ><%= Noticias.getTitle()%></h5>
                             <p class="card-text"><%= Noticias.getDescription()%></p>
                             <div class="d-flex justify-content-around">
-                                <textarea class="form-control" name="NotID" style="display: none"><%= Noticias.getId()%></textarea>
                                 <textarea class="form-control" id="Respuesta" name="Respuesta" style="display: none"></textarea>
                                 <a id="aceptar" href="#" class="btn btn-success" data-toggle="modal" data-target="#exampleModal2" onclick="estado1()"data-whatever="@mdo">Aceptar</a>
                                 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

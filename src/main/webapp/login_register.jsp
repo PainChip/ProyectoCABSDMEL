@@ -28,7 +28,7 @@
                 <input name="password" type="text" class="input-field" placeholder="Contraseña" required>
                 <input type="checkbox" class="check-box"><span>Recordar Contraseña</span>
                 <button type="submit" class="submit-btn">Ingresar</button> 
-                <button action="LogInControllerAnonimo" class="submit-btn" style="margin-top: 50px">Anonimo</button> 
+               
             </form>
             <form action="SignInController" class="input-group" id="register" method="POST">
                 <input name="username" type="text" class="input-field" placeholder="Nombre de Usuario" required>

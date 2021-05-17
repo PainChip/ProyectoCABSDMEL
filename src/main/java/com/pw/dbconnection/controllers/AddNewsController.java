@@ -30,7 +30,7 @@ import javax.servlet.http.Part;
  * @author CARLOS
  */
 @WebServlet(name = "AddNewsController", urlPatterns = {"/AddNewsController"})
-@MultipartConfig(maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 25)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 1024, maxRequestSize = 1024 * 1024 * 1024)
 public class AddNewsController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,8 +58,6 @@ public class AddNewsController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -130,11 +128,12 @@ public class AddNewsController extends HttpServlet {
                 MediaDAO.insertMedia(Media3);
             }
         }
+        
         String contentType4 = file4.getContentType();
-        if (contentType.equals("video/mp4") == true) {
+        if (contentType4.equals("video/mp4") == true) {
             nameImage4 = file4.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType4);
             fullPath4 = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage4;
-            Media Media4 = new Media(respuesta,false,FileUtils.RUTE_USER_IMAGE + "/" + nameImage);
+            Media Media4 = new Media(respuesta,false,FileUtils.RUTE_USER_IMAGE + "/" + nameImage4);
             MediaDAO.insertMedia(Media4);
             file4.write(fullPath4);
         }

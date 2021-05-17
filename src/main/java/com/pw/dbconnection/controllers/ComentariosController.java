@@ -39,9 +39,9 @@ public class ComentariosController extends HttpServlet {
         String elid = request.getParameter("idusuario");  
         User usuario = new User();
         String elname;
-        if(elid.equals("") == true ){
+        if(elid.equals("") == true || elid.equals("null") == true ){
             elname = request.getParameter("commenName");
-            if(elname.equals("") == true){
+            if(elname.equals("") == true || elid.equals("null") == true ){
                elname = "Anonimo";
             }
             usuario.setUsername(elname);
@@ -76,9 +76,9 @@ public class ComentariosController extends HttpServlet {
 
         User usuario = new User();
         String elname;
-        if(elid.equals("") == true ){
+        if(elid.equals("null") == true ){
             elname = request.getParameter("commenName");
-            if(elname.equals("") == true){
+            if(elname.equals("null") == true){
                elname = "Anonimo";
             }
             usuario.setUsername(elname);
